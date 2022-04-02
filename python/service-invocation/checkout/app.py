@@ -17,24 +17,20 @@ def index():
     return jsonify({ 'message': 'dapr-python-checkout' })
 
 
-@app.route('/post_orders')
+@app.route('/api/v1/post_orders')
 def postOrders():
-    print(base_url)
     orderArr = []
     for i in range(1, 11):
         order = {'order_id': i}
 
         # Invoking a service
-        result = requests.post(
+        requests.post(
             url=f'{base_url}/orders',
             data=json.dumps(order)
         )
 
-        print(result)
         msg = 'Order passed: ' + json.dumps(order)
-        print(msg)
         orderArr.append(msg)
-
     return jsonify({ 'orders': orderArr })
 
 
