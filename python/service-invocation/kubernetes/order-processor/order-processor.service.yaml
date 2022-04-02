@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: order-processor
+  labels:
+    app: order-processor-app
+spec:
+  selector:
+    app: order-processor-app
+  ports:
+  - protocol: TCP
+    port: 8090
+    targetPort: 8000
+  type: LoadBalancer

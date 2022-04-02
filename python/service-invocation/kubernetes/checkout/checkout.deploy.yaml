@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: checkout
+  labels:
+    app: checkout-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: checkout-app
+  template:
+    metadata:
+      labels:
+        app: checkout-app
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "checkout-app"
+        dapr.io/app-port: "8000"
+    spec:
+      containers:
+      - name: checkout-app
+        image: daprcontainerapps-checkout:latest
+        ports:
+        - containerPort: 8000
+        imagePullPolicy: "IfNotPresent"

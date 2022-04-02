@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: checkout
+  labels:
+    app: checkout-app
+spec:
+  selector:
+    app: checkout-app
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8000
+  type: LoadBalancer
