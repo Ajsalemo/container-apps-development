@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: server
+  labels:
+    app: grpc-server
+spec:
+  selector:
+    app: grpc-server
+  ports:
+  - protocol: TCP
+    port: 50051
+    targetPort: 50051
+  type: LoadBalancer

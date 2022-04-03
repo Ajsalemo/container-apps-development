@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server
+  labels:
+    app: grpc-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grpc-server
+  template:
+    metadata:
+      labels:
+        app: grpc-server
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "grpc-server"
+        dapr.io/app-port: "50051"
+        dapr.io/app-protocol: "grpc"
+    spec:
+      containers:
+      - name: grpc-server
+        image: serviceinvocationgrpc-server:latest
+        ports:
+        - containerPort: 50051
+        imagePullPolicy: "IfNotPresent"

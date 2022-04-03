@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+  labels:
+    app: grpc-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grpc-client
+  template:
+    metadata:
+      labels:
+        app: grpc-client
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "grpc-client"
+        dapr.io/app-port: "8000"
+        dapr.io/app-protocol: "grpc"
+    spec:
+      containers:
+      - name: grpc-client
+        image: serviceinvocationgrpc-client:latest
+        ports:
+        - containerPort: 8000
+        imagePullPolicy: "IfNotPresent"
