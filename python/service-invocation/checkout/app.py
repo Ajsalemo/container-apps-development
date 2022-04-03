@@ -1,7 +1,7 @@
 import json
 import os
-
 import requests
+
 from flask import Flask, jsonify
 
 SERVICE_BASE_URL = os.getenv('BASE_URL', 'http://localhost')

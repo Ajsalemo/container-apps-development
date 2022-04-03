@@ -1,0 +1,9 @@
+RESOURCE_GROUP="myrg"
+CONTAINERAPPS_ENVIRONMENT="mycontainerenv"
+LOCATION="eastus"
+AZURE_CONTAINER_REGISTRY="myregistry.azurecr.io"
+AZURE_CONTAINER_REGISTRY_USERNAME="myregistry"
+AZURE_CONTAINER_REGISTRY_PASSWORD="myregistrypassword"
+DAPR_APP_ID="order-processor-app"
+
+
