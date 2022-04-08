@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: state-management-http
+  labels:
+    app: state-management-http-app
+spec:
+  selector:
+    app: state-management-http-app
+  ports:
+  - protocol: TCP
+    port: 8090
+    targetPort: 8000
+  type: LoadBalancer

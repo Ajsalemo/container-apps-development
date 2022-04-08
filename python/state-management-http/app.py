@@ -1,8 +1,8 @@
 import logging
-import requests
 import os
 
-from flask import Flask, request, jsonify
+import requests
+from flask import Flask, jsonify
 
 logging.basicConfig(level=logging.INFO)
 
@@ -38,8 +38,9 @@ def post_order():
     post_order_arr.append(order)
     return jsonify({ 'orders': post_order_arr })
 
+
 @app.route('/order/get')
-def post_order():
+def get_order():
     get_order_arr = []
     for i in range(1, 10):
         getOrderId = str(i)
@@ -52,6 +53,7 @@ def post_order():
     order = 'Getting Order: ' + str(result.json())
     get_order_arr.append(order)
     return jsonify({ 'get_order': get_order_arr })
+
 
 @app.route('/order/delete/{id}')
 def delete_order(id):

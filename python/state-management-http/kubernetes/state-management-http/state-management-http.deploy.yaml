@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: state-management
+  labels:
+    app: state-management-http-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: state-management-http-app
+  template:
+    metadata:
+      labels:
+        app: state-management-http-app
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "state-management-http"
+        dapr.io/app-port: "8000"
+
+    spec:
+      containers:
+      - name: state-management-http-app
+        image: daprcontainerapps-state-management:latest
+        ports:
+        - containerPort: 8000
+        imagePullPolicy: "IfNotPresent"
+ 
