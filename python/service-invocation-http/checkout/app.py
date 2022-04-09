@@ -7,8 +7,9 @@ from flask import Flask, jsonify
 SERVICE_BASE_URL = os.getenv('BASE_URL', 'http://localhost')
 DAPR_HTTP_PORT = os.getenv('DAPR_HTTP_PORT', '3500')
 DAPR_APP_ID = os.getenv('DAPR_APP_ID', 'order-processor-app')
+DAPR_ENDPOINT_TYPE = 'v1.0/invoke'
 
-base_url = f'{SERVICE_BASE_URL}:{DAPR_HTTP_PORT}/v1.0/invoke/{DAPR_APP_ID}/method'
+base_url = f'{SERVICE_BASE_URL}:{DAPR_HTTP_PORT}/{DAPR_ENDPOINT_TYPE}/{DAPR_APP_ID}/method'
 
 app = Flask(__name__)
 
@@ -31,6 +32,7 @@ def postOrders():
 
         msg = 'Order passed: ' + json.dumps(order)
         orderArr.append(msg)
+        
     return jsonify({ 'orders': orderArr })
 
 

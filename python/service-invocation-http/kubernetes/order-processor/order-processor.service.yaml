@@ -9,6 +9,6 @@ spec:
     app: order-processor-app
   ports:
   - protocol: TCP
-    port: 8090
-    targetPort: 8000
-  type: LoadBalancer
+    port: 8000
+    nodePort: 31314
+  type: NodePort

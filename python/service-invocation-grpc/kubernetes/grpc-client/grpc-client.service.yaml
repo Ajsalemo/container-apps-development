@@ -10,5 +10,5 @@ spec:
   ports:
   - protocol: TCP
     port: 8000
-    targetPort: 8000
-  type: LoadBalancer
+    nodePort: 31313
+  type: NodePort
