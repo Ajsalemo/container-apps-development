@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: state-management
+  name: state-management-http-app
   labels:
     app: state-management-http-app
 spec:
@@ -15,7 +15,7 @@ spec:
         app: state-management-http-app
       annotations:
         dapr.io/enabled: "true"
-        dapr.io/app-id: "state-management-http"
+        dapr.io/app-id: "state-management-http-app"
         dapr.io/app-port: "8000"
 
     spec:

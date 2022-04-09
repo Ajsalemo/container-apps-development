@@ -2,14 +2,14 @@ apiVersion: dapr.io/v1alpha1
 kind: Component
 metadata:
   name: statestore
-  namespace: dapr-system
+  namespace: default
 spec:
   type: state.azure.blobstorage
   version: v1
   metadata:
   - name: accountName
-    value: "<ACCOUNT>"
+    value: "<storageAccount>"
   - name: accountKey
-    value: "<KEY>"
+    value: "<accessKey>"
   - name: containerName
     value: "general"
