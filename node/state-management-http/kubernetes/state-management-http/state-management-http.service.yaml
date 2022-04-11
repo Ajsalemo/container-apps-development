@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: node-state-management-http
+  labels:
+    app: node-state-management-http-app
+spec:
+  selector:
+    app: node-state-management-http-app
+  ports:
+  - protocol: TCP
+    port: 3000
+    nodePort: 31313
+  type: NodePort
