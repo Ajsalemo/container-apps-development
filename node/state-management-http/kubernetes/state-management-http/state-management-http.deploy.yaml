@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: node-state-management-http
+  name: node-state-management-http-app
   labels:
     app: node-state-management-http-app
 spec:

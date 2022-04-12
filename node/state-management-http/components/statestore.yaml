@@ -8,8 +8,8 @@ spec:
   version: v1
   metadata:
   - name: accountName
-    value: "<storageAccount>"
+    value: ""
   - name: accountKey
-    value: "<accessKey>"
+    value: ""
   - name: containerName
     value: "general"
