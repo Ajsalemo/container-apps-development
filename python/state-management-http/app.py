@@ -19,7 +19,7 @@ def index():
     return jsonify({ 'message': 'dapr-python-state-management' })
 
 
-@app.route('/order/post')
+@app.route('/api/order/post')
 def post_order():
     post_order_arr = []
     for i in range(1, 10):
@@ -41,7 +41,7 @@ def post_order():
     return jsonify({ 'orders': post_order_arr })
 
 
-@app.route('/order/get')
+@app.route('/api/order/get')
 def get_order():
     get_order_arr = []
     for i in range(1, 10):
@@ -57,7 +57,7 @@ def get_order():
     return jsonify({ 'get_order': get_order_arr })
 
 
-@app.route('/order/delete/{id}')
+@app.route('/api/order/delete/{id}')
 def delete_order(id):
     # Delete state from the state store
     result = requests.delete(

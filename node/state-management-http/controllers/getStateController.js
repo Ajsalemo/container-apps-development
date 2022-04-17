@@ -1,16 +1,18 @@
 const express = require("express");
 const axios = require("axios").default;
 const router = express.Router();
+const { BASE_URL } = require("../config/config");
 
 const getStateController = router.get("/", async (_, res, next) => {
   try {
     const getOrderArr = [];
-    for (i = 0; i < 10; i++) {
-      const { res } = await axios.get(`${DAPR_HOST}:${DAPR_HTTP_PORT}/v1.0/state/${DAPR_STATE_STORE}/${i}`);
-      console.log(res)
-      getOrderArr.push(res)
+    for (let i = 0; i < 10; i++) {
+      const stateIndex = `${i}`.toString()
+      const { data } = await axios.get(`${BASE_URL}/${stateIndex}`);
+      console.log(data)
+      getOrderArr.push(data)
     }
-    res.json({ "message": postOrderArr })
+    res.json({ "message": getOrderArr })
   } catch (error) {
     console.log("An error has occurred: ", error);
     next(error);
