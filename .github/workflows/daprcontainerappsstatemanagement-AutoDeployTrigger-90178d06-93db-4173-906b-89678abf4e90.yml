@@ -10,7 +10,8 @@ on:
     - './python/state-management-http/**'
 
   # Allow mannually trigger 
-  workflow_dispatch:      
+  # Comment this out for automatic builds
+  # workflow_dispatch:      
 
 jobs:
   build:
