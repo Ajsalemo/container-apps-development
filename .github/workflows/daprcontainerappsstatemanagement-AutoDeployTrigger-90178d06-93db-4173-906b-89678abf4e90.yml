@@ -5,12 +5,12 @@ on:
   # Automatically trigger it when detected changes in repo
   push:
     branches: 
-      [ main ]
+      - main
     paths:
     - 'python/state-management-http/**'
 
   # Allow mannually trigger 
-  # workflow_dispatch:      
+  workflow_dispatch:      
 
 jobs:
   build:
