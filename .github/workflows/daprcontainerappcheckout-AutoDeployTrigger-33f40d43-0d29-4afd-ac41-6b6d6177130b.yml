@@ -5,7 +5,7 @@ on:
   # Automatically trigger it when detected changes in repo
   push:
     branches: 
-      [ main ]
+      - main
     paths:
     - 'python/service-invocation-http/checkout/**'
     - '.github/workflows/daprcontainerappcheckout-AutoDeployTrigger-33f40d43-0d29-4afd-ac41-6b6d6177130b.yml'

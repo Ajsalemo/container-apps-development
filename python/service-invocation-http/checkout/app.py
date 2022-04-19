@@ -15,10 +15,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return jsonify({ 'message': 'dapr-python-checkout' })
+    return jsonify({ 'message': 'dapr-python-checkout-gha' })
 
 
-@app.route('/api/v1/post_orders')
+@app.route('/api/v1/orders/post')
 def postOrders():
     orderArr = []
     for i in range(1, 11):
