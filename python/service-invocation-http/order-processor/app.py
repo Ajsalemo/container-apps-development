@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return jsonify({ 'message': 'dapr-python-order-processor-gh-actions' })
+    return jsonify({ 'message': 'dapr-python-order-processor' })
 
 
 @app.route('/orders', methods=['POST'])
