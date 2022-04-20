@@ -7,7 +7,7 @@ on:
     branches: 
       [ main ]
     paths:
-    - 'python/service-invocation-http/**'
+    - 'python/service-invocation-http/checkout/**'
     - '.github/workflows/ansalemo-ca-actions-test-2-AutoDeployTrigger-b9a07b20-d4db-4fd5-9adb-9be0bea668ca.yml'
 
   # Allow mannually trigger 
@@ -36,8 +36,8 @@ jobs:
         with:
           push: true
           tags: ansalemocontainerregistry.azurecr.io/ansalemo-ca-actions-test-2:${{ github.sha }}
-          file: ./python/service-invocation-http/Dockerfile
-          context: ./python/service-invocation-http/
+          file: ./python/service-invocation-http/checkout/Dockerfile
+          context: ./python/service-invocation-http/checkout/
 
 
   deploy:
