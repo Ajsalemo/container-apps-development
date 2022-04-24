@@ -7,7 +7,6 @@ const healthController = router.get("/", async (_, res) => {
   const daprAppIdCallee = process.env.DAPR_APP_ID_CALLEE || 'server'
   try {
     const { data } = await axios.get(`${daprBaseUrl}/${daprAppIdCallee}/method/api/return/health`);
-    console.log(data);
     res.send(data);
   } catch (error) {
     console.log("An error has occurred: ", error);
