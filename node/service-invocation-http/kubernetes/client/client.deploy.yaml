@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+  labels:
+    app: client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "client"
+        dapr.io/app-port: "3000"
+    spec:
+      containers:
+      - name: client
+        image: daprcontainerapps-node-serviceinvocation-client:latest
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: "IfNotPresent"

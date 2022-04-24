@@ -3,8 +3,10 @@ import axios from "axios";
 const router = Router();
 
 const healthController = router.get("/", async (_, res) => {
+  const daprBaseUrl = process.env.DAPR_BASE_URL || 'http://localhost:3500/v1.0/invoke'
+  const daprAppIdCallee = process.env.DAPR_APP_ID_CALLEE || 'server'
   try {
-    const { data } = await axios.get("http://localhost:8080/api/return/health");
+    const { data } = await axios.get(`${daprBaseUrl}/${daprAppIdCallee}/method/api/return/health`);
     console.log(data);
     res.send(data);
   } catch (error) {

@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: client
+  labels:
+    app: client
+spec:
+  selector:
+    app: client
+  ports:
+  - protocol: TCP
+    port: 3000
+    nodePort: 31313
+  type: NodePort
