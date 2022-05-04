@@ -112,7 +112,7 @@ resource serviceinvocationgrpcserver 'Microsoft.App/containerApps@2022-01-01-pre
       ingress: {
         external: false
         targetPort: 50051
-        // transport: 'http2'
+        transport: 'http2'
       }
       dapr: {
         enabled: true

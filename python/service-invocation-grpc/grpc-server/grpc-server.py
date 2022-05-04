@@ -10,3 +10,5 @@ def mymethod(request: InvokeMethodRequest) -> InvokeMethodResponse:
     return InvokeMethodResponse(b'INVOKE_RECEIVED', "text/plain; charset=UTF-8")
 
 app.run(50051)
+
+https://supportability.visualstudio.com/AzureAppService/_wiki/wikis/AzureAppService/541757/Dapr-on-Container-Apps
