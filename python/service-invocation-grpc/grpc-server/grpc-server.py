@@ -11,4 +11,3 @@ def mymethod(request: InvokeMethodRequest) -> InvokeMethodResponse:
 
 app.run(50051)
 
-https://supportability.visualstudio.com/AzureAppService/_wiki/wikis/AzureAppService/541757/Dapr-on-Container-Apps

@@ -1,8 +1,8 @@
-RESOURCE_GROUP="ansalemo-rg"
-CONTAINERAPPS_ENVIRONMENT="ansalemo-ca-env"
+RESOURCE_GROUP="my-rg"
+CONTAINERAPPS_ENVIRONMENT="mycontainerapenv"
 LOCATION="eastus"
-AZURE_CONTAINER_REGISTRY="ansalemocontainerregistry.azurecr.io"
-AZURE_CONTAINER_REGISTRY_USERNAME="ansalemoContainerRegistry"
-AZURE_CONTAINER_REGISTRY_PASSWORD="Vj3mVRsO+LiCKQr0Y3hFYjg40ltygpnL"
+AZURE_CONTAINER_REGISTRY="yourcontainerregistry.azurecr.io"
+AZURE_CONTAINER_REGISTRY_USERNAME="yourcontainerregistry"
+AZURE_CONTAINER_REGISTRY_PASSWORD="password"
 
 

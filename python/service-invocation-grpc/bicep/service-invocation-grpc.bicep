@@ -47,55 +47,55 @@ resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
   }
 }
 
-resource serviceinvocationgrpcclient 'Microsoft.App/containerApps@2022-01-01-preview' = {
-  name: 'serviceinvocationgrpcclient'
-  location: location
-  properties: {
-    managedEnvironmentId: environment.id
-    configuration: {
-      secrets: [
-        {
-          name: 'containerregistrypasswordref'
-          value: azureContainerRegistryPassword
-        }
-      ]
-      ingress: {
-        external: true
-        targetPort: 8000
-      }
-      dapr: {
-        enabled: true
-        appId: 'grpc-client'
-        appProtocol: 'http'
-        appPort: 8000
-      }
-      registries: [
-        {
-          // server is in the format of myregistry.azurecr.io
-          server: azureContainerRegistry
-          username: azureContainerRegistryUsername
-          passwordSecretRef: 'containerregistrypasswordref'
-        }
-      ]
-    }
-    template: {
-      containers: [
-        {
-          image: '${azureContainerRegistry}/serviceinvocationgrpc-client:latest'
-          name: 'serviceinvocationgrpc-client'
-          resources: {
-            cpu: '0.5'
-            memory: '1.0Gi'
-          }
-        }
-      ]
-      scale: {
-        minReplicas: 1
-        maxReplicas: 1
-      }
-    }
-  }
-}
+// resource serviceinvocationgrpcclient 'Microsoft.App/containerApps@2022-01-01-preview' = {
+//   name: 'serviceinvocationgrpcclient'
+//   location: location
+//   properties: {
+//     managedEnvironmentId: environment.id
+//     configuration: {
+//       secrets: [
+//         {
+//           name: 'containerregistrypasswordref'
+//           value: azureContainerRegistryPassword
+//         }
+//       ]
+//       ingress: {
+//         external: true
+//         targetPort: 8000
+//       }
+//       dapr: {
+//         enabled: true
+//         appId: 'grpc-client'
+//         appProtocol: 'http'
+//         appPort: 8000
+//       }
+//       registries: [
+//         {
+//           // server is in the format of myregistry.azurecr.io
+//           server: azureContainerRegistry
+//           username: azureContainerRegistryUsername
+//           passwordSecretRef: 'containerregistrypasswordref'
+//         }
+//       ]
+//     }
+//     template: {
+//       containers: [
+//         {
+//           image: '${azureContainerRegistry}/serviceinvocationgrpc-client:latest'
+//           name: 'serviceinvocationgrpc-client'
+//           resources: {
+//             cpu: '0.5'
+//             memory: '1.0Gi'
+//           }
+//         }
+//       ]
+//       scale: {
+//         minReplicas: 1
+//         maxReplicas: 1
+//       }
+//     }
+//   }
+// }
 
 resource serviceinvocationgrpcserver 'Microsoft.App/containerApps@2022-01-01-preview' = {
   name: 'serviceinvocationgrpcserver'
@@ -114,12 +114,12 @@ resource serviceinvocationgrpcserver 'Microsoft.App/containerApps@2022-01-01-pre
         targetPort: 50051
         transport: 'http2'
       }
-      dapr: {
-        enabled: true
-        appId: 'grpc-server'
-        appProtocol: 'grpc'
-        appPort: 50051
-      }
+      // dapr: {
+      //   enabled: true
+      //   appId: 'grpc-server'
+      //   appProtocol: 'grpc'
+      //   appPort: 50051
+      // }
       registries: [
         {
           // server is in the format of myregistry.azurecr.io
@@ -132,8 +132,8 @@ resource serviceinvocationgrpcserver 'Microsoft.App/containerApps@2022-01-01-pre
     template: {
       containers: [
         {
-          image: '${azureContainerRegistry}/serviceinvocationgrpc-server:latest'
-          name: 'serviceinvocationgrpc-server'
+          image: '${azureContainerRegistry}/azure-containerapps-customer-grpc-test:v4'
+          name: 'azure-containerapps-customer-grpc-test'
           resources: {
             cpu: '0.5'
             memory: '1.0Gi'
@@ -146,7 +146,7 @@ resource serviceinvocationgrpcserver 'Microsoft.App/containerApps@2022-01-01-pre
       }
     }
   }
-  dependsOn: [
-    serviceinvocationgrpcclient
-  ]
+  // dependsOn: [
+  //   serviceinvocationgrpcclient
+  // ]
 }

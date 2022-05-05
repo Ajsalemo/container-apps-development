@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+service Greeter {
+   rpc returns (ServerOutput) {}
+}
+
+message ServerOutput {
+   string message = "Hello World from Python with gRPC";
+}
+
