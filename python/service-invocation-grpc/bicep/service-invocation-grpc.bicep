@@ -36,7 +36,7 @@ resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
   name: environment_name
   location: location
   properties: {
-    daprAIInstrumentationKey: reference(appInsights.id, '2020-02-02').InstrumentationKey
+    // daprAIInstrumentationKey: reference(appInsights.id, '2020-02-02').InstrumentationKey
     appLogsConfiguration: {
       destination: 'log-analytics'
       logAnalyticsConfiguration: {
@@ -110,7 +110,7 @@ resource serviceinvocationgrpcserver 'Microsoft.App/containerApps@2022-01-01-pre
         }
       ]
       ingress: {
-        external: false
+        external: true
         targetPort: 50051
         transport: 'http2'
       }
@@ -132,7 +132,7 @@ resource serviceinvocationgrpcserver 'Microsoft.App/containerApps@2022-01-01-pre
     template: {
       containers: [
         {
-          image: '${azureContainerRegistry}/azure-containerapps-customer-grpc-test:v4'
+          image: '${azureContainerRegistry}/serviceinvocationgrpc-client:latest'
           name: 'azure-containerapps-customer-grpc-test'
           resources: {
             cpu: '0.5'

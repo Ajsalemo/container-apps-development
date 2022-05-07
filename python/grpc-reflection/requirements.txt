@@ -1,0 +1,6 @@
+grpc-reflection==0.0.1
+grpcio==1.46.0
+grpcio-reflection==1.46.0
+grpcio-tools==1.46.0
+protobuf==3.20.1
+six==1.16.0
