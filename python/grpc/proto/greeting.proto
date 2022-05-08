@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package helloworld;
+
+service Greeter {
+  // Sends a greeting
+  rpc Greeting (Empty) returns (GreetingReply) {}
+}
+
+message Empty {}
+
+// The response message containing the greetings
+message GreetingReply {
+  string message = 1;
+}
