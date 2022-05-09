@@ -1,4 +1,4 @@
-# dapr-container-apps
+# container-apps-development
 
 Examples that have been deployed to [Azure Container Apps](https://docs.microsoft.com/en-us/azure/container-apps/overview) in different languages utilizing HTTP or gRPC with [Dapr](https://dapr.io/). These are all mostly pulled from existing Dapr samples. 
 
@@ -35,3 +35,7 @@ Deployed to Container Apps with [Bicep](https://docs.microsoft.com/en-us/azure/a
         - `state-management.bicep`: BICEP file that deploys the `state-management-http` solution
       - `components`: This component `.yaml` can be used for local Kubernetes components
       - `kubernetes`: This can be used to deploy Kubernetes Services and Deployments if running locally
+
+   <br>
+   
+   - `grpc`: A containerized example using the gRPC package for Python. This example doesn't use reflection
