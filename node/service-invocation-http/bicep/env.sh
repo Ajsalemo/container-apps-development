@@ -1,4 +1,4 @@
-RESOURCE_GROUP="ansalemo-rg"
+RESOURCE_GROUP="my-rg"
 CONTAINERAPPS_ENVIRONMENT="containerappenvironment"
 LOCATION="eastus"
 AZURE_CONTAINER_REGISTRY="mycontainerregistry.azurecr.io"
