@@ -4,8 +4,14 @@ from azure.identity import DefaultAzureCredential
 from flask import Flask, jsonify
 
 app = Flask(__name__)
+client_id=os.environ["AZURE_CLIENT_ID"]
 
 @app.route("/")
+def index():
+    print(client_id)
+    return jsonify({ "message": "azure-webapps-linux-python-flask-msi-containerapps" })
+
+@app.route("/api/kv")
 def get_keyvault_secret():
     key_vault_name = os.environ["KEY_VAULT_NAME"]
     secret_name = os.environ["SECRET_NAME"]

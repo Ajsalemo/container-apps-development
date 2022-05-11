@@ -7,7 +7,7 @@ param secretName string
 @secure()
 param azureContainerRegistryPassword string
 
-var logAnalyticsWorkspaceName = 'logs-${environment_name}'
+var logAnalyticsWorkspaceName = 'logs-${environment_name}-ca'
 var appInsightsName = 'appins-${environment_name}'
 
 resource logAnalyticsWorkspace'Microsoft.OperationalInsights/workspaces@2020-03-01-preview' = {
@@ -49,8 +49,8 @@ resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
   }
 }
 
-resource pythonmanagedidentitykv 'Microsoft.App/containerApps@2022-01-01-preview' = {
-  name: 'pythonmanagedidentitykv'
+resource pythonmanagedidentitykeyvault 'Microsoft.App/containerApps@2022-01-01-preview' = {
+  name: 'pythonmanagedidentitykeyvault'
   location: location
   identity: {
     type: 'SystemAssigned'
@@ -80,14 +80,12 @@ resource pythonmanagedidentitykv 'Microsoft.App/containerApps@2022-01-01-preview
     template: {
       containers: [
         {
-          image: '${azureContainerRegistry}/azure-webapps-linux-python-flask-msi-containerapps:latest'
-          name: 'azure-webapps-linux-python-flask-msi-containerapps'
+          image: '${azureContainerRegistry}/azure-webapps-linux-python-flask-msi-containerapps:v3'
+          name: 'azurewebappslinuxpythonflaskmscontainerapps'
           resources: {
             cpu: '0.5'
             memory: '1.0Gi'
           }
-          // This appId is used to call the order-processor app in service invokation
-          // We set the actual appId for Dapr apps in the dapr {} object
           env: [
             {
               name: 'KEY_VAULT_NAME'
@@ -113,7 +111,7 @@ resource keyVaultPolicy 'Microsoft.KeyVault/vaults/accessPolicies@2021-11-01-pre
   properties: {
     accessPolicies: [
       {
-        objectId: reference('Microsoft.App/containerApps/${pythonmanagedidentitykv.name}', '2022-01-01-preview', 'Full').identity.principalId
+        objectId: reference('Microsoft.App/containerApps/${pythonmanagedidentitykeyvault.name}', '2022-01-01-preview', 'Full').identity.principalId
         permissions: {
           secrets: [
             'get'
