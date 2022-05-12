@@ -8,7 +8,7 @@ param userAssignedIdentityName string
 @secure()
 param azureContainerRegistryPassword string
 
-var logAnalyticsWorkspaceName = 'logs-${environment_name}-ca'
+var logAnalyticsWorkspaceName = 'logs-${environment_name}'
 var appInsightsName = 'appins-${environment_name}'
 
 resource logAnalyticsWorkspace'Microsoft.OperationalInsights/workspaces@2020-03-01-preview' = {
@@ -89,7 +89,7 @@ resource pythonusermanagedidentity 'Microsoft.App/containerApps@2022-01-01-previ
     template: {
       containers: [
         {
-          image: '${azureContainerRegistry}/azure-webapps-linux-python-flask-msi-containerapps:v3'
+          image: '${azureContainerRegistry}/azure-webapps-linux-python-flask-msi-containerapps:v5'
           name: 'azurewebappslinuxpythonflaskmscontainerapps'
           resources: {
             cpu: '0.5'
@@ -103,6 +103,10 @@ resource pythonusermanagedidentity 'Microsoft.App/containerApps@2022-01-01-previ
             {
               name: 'SECRET_NAME'
               value: secretName
+            }
+            {
+              name: 'AZURE_CLIENT_ID'
+              value: reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', userAssignedIdentity.name)).clientId
             }
           ]
         }
@@ -130,9 +134,6 @@ resource keyVaultPolicy 'Microsoft.KeyVault/vaults/accessPolicies@2021-11-01-pre
       }
     ]
   }
-  dependsOn: [
-    userAssignedIdentity.name
-  ]
 }
 
 
