@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: order-processor
+  labels:
+    app: order-processor
+spec:
+  selector:
+    app: order-processor
+  ports:
+  - protocol: TCP
+    port: 8000
+    targetPort: 8000
+    nodePort: 31316
+  type: NodePort

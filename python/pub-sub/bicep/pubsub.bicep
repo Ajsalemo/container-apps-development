@@ -51,10 +51,10 @@ resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
 
 // Reference: https://docs.microsoft.com/en-us/azure/templates/microsoft.app/managedenvironments/daprcomponents?tabs=bicep
 resource daprComponent 'Microsoft.App/managedEnvironments/daprComponents@2022-01-01-preview' = {
-  name: 'statestore'
+  name: 'pubsub'
   parent: environment
   properties: {
-    componentType: 'state.azure.blobstorage'
+    componentType: 'pubsub.azure.eventhubs'
     version: 'v1'
     ignoreErrors: false
     initTimeout: '5s'
@@ -66,26 +66,31 @@ resource daprComponent 'Microsoft.App/managedEnvironments/daprComponents@2022-01
     ]
     metadata: [
       {
-        name: 'accountName'
+        name: 'connectionString'
+        value: 'Endpoint=sb://ansalemo-eventhub.servicebus.windows.net/;SharedAccessKeyName=ansalemo-eventhub-policy;SharedAccessKey=TgcCCTqGR5bD0qYdDVTX+Og7iDLHQj/wDc0B8KztmA4=;EntityPath=ansalemo-eventhub-partition'
+      }
+      {
+        name: 'storageAccountName'
         value: storageAccountName
       }
       {
-        name: 'containerName'
-        value: storageContainerName
+        name: 'storageAccountKey'
+        secretRef: 'storageaccountkey'
       }
       {
-        name: 'accountKey'
-        secretRef: 'storageaccountkey'
+        name: 'storageContainerName'
+        value: storageContainerName
       }
     ]
     scopes: [
-      'daprcontainerappsstatemanagement'
+      'checkout'
+      'order-processor'
     ]
   }
 }
 
-resource daprcontainerappsstatemanagement 'Microsoft.App/containerApps@2022-01-01-preview' = {
-  name: 'daprcontainerapps'
+resource checkout 'Microsoft.App/containerApps@2022-01-01-preview' = {
+  name: 'checkout'
   location: location
   properties: {
     managedEnvironmentId: environment.id
@@ -102,7 +107,7 @@ resource daprcontainerappsstatemanagement 'Microsoft.App/containerApps@2022-01-0
       }
       dapr: {
         enabled: true
-        appId: 'daprcontainerappsstatemanagement'
+        appId: 'checkout'
         appProtocol: 'http'
         appPort: 8000
       }
@@ -118,8 +123,58 @@ resource daprcontainerappsstatemanagement 'Microsoft.App/containerApps@2022-01-0
     template: {
       containers: [
         {
-          image: '${azureContainerRegistry}/daprcontainerapps-state-management-http:v2'
-          name: 'daprcontainerappsstatemanagement'
+          image: '${azureContainerRegistry}/container-apps-development-pubsub-checkout:latest'
+          name: 'containerappsdevelopmentpubsubcheckout'
+          resources: {
+            cpu: '0.5'
+            memory: '1.0Gi'
+          }
+        }
+      ]
+      scale: {
+        minReplicas: 1
+        maxReplicas: 1
+      }
+    }
+  }
+}
+
+resource orderprocessor 'Microsoft.App/containerApps@2022-01-01-preview' = {
+  name: 'orderprocessor'
+  location: location
+  properties: {
+    managedEnvironmentId: environment.id
+    configuration: {
+      secrets: [
+        {
+          name: 'containerregistrypasswordref'
+          value: azureContainerRegistryPassword
+        }
+      ]
+      ingress: {
+        external: true
+        targetPort: 8000
+      }
+      dapr: {
+        enabled: true
+        appId: 'order-processor'
+        appProtocol: 'http'
+        appPort: 8000
+      }
+      registries: [
+        {
+          // server is in the format of myregistry.azurecr.io
+          server: azureContainerRegistry
+          username: azureContainerRegistryUsername
+          passwordSecretRef: 'containerregistrypasswordref'
+        }
+      ]
+    }
+    template: {
+      containers: [
+        {
+          image: '${azureContainerRegistry}/container-apps-development-pubsub-orderprocessor:latest'
+          name: 'containerappsdevelopmentpubsuborderprocessor'
           resources: {
             cpu: '0.5'
             memory: '1.0Gi'

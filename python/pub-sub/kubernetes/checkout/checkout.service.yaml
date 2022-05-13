@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: checkout
+  labels:
+    app: checkout
+spec:
+  selector:
+    app: checkout
+  ports:
+  - protocol: TCP
+    port: 8000
+    nodePort: 31315
+  type: NodePort

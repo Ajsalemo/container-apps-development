@@ -1,0 +1,20 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: eventhubs-pubsub
+  namespace: default
+spec:
+  type: pubsub.azure.eventhubs
+  version: v1
+  metadata:
+  - name: connectionString    
+  # Either connectionString or eventHubNamespace. Should not be used when 
+  # Azure Authentication mechanism is used.
+    value: "Endpoint=sb://ansalemo-eventhub.servicebus.windows.net/;SharedAccessKeyName=ansalemo-eventhub-policy;SharedAccessKey=TgcCCTqGR5bD0qYdDVTX+Og7iDLHQj/wDc0B8KztmA4=;EntityPath=ansalemo-eventhub-partition"
+  ## Subscriber attributes
+  - name: storageAccountName
+    value: "ansalemostorageaccount"
+  - name: storageAccountKey
+    value: "112233FXkRw3i3u27lqjq9nkEcrFx8gOycCNG6Eok407VPqkmmeUaiFaanmHIA507OFLVJLoWkBSB5D8Oe+AStgvnW1g==445566778899"
+  - name: storageContainerName
+    value: "general"
