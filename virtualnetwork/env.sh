@@ -1,0 +1,6 @@
+RESOURCE_GROUP="my-rg"
+CONTAINERAPPS_ENVIRONMENT="containerappenvironment"
+LOCATION="eastus"
+VNET_NAME="my-vnet"
+INFRA_SUBNET="subnet-cp"
+RUNTIME_SUBNET="subnet-app"
