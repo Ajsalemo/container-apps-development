@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server
+  labels:
+    app: server-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: server-app
+  template:
+    metadata:
+      labels:
+        app: server-app
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "server-app"
+        dapr.io/app-port: "80"
+
+    spec:
+      containers:
+      - name: server-app
+        image: php-service-invocation-http-server:latest
+        ports:
+        - containerPort: 80
+        imagePullPolicy: "IfNotPresent"
