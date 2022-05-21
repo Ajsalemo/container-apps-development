@@ -1,2 +1,19 @@
+<<<<<<< HEAD
 .git
 .env
+=======
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/.idea
+/.vscode
+>>>>>>> 97a99ca1ede194528c220530d8f7213d9bc1d150
