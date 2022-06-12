@@ -46,7 +46,7 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2021-08-01' = {
   }
 }
 
-resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
+resource environment 'Microsoft.App/managedEnvironments@2022-03-01' = {
   name: environment_name
   location: location
   properties: {
@@ -68,7 +68,7 @@ resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
   }
 }
 
-resource nginxcontainerapp 'Microsoft.App/containerApps@2022-01-01-preview' = {
+resource nginxcontainerapp 'Microsoft.App/containerApps@2022-03-01' = {
   name: 'nginxcontainerapp-name'
   location: location
   properties: {
