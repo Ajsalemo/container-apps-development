@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: client-state-management
+  labels:
+    app: client-state-management-app
+spec:
+  selector:
+    app: client-state-management-app
+  ports:
+  - protocol: TCP
+    port: 80
+    nodePort: 31320
+  type: NodePort

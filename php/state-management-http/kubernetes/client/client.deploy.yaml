@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-state-management
+  labels:
+    app: client-state-management-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client-state-management-app
+  template:
+    metadata:
+      labels:
+        app: client-state-management-app
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "client-state-management-app"
+        dapr.io/app-port: "80"
+    spec:
+      containers:
+      - name: client-state-management-app
+        image: php-state-management-client:latest
+        ports:
+        - containerPort: 80
+        imagePullPolicy: "IfNotPresent"
