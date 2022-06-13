@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SaveStateController;
+use App\Http\Controllers\GetStateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,3 @@ use App\Http\Controllers\SaveStateController;
 
 Route::get('/', [GetStateController::class, 'getState']);
 Route::get('/api/state/save', [SaveStateController::class, 'saveState']);
-
