@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: client-state-management-app
-        image: php-state-management-client:latest
+        image: php-state-management-http:latest
         ports:
         - containerPort: 80
         imagePullPolicy: "IfNotPresent"

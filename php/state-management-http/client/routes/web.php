@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SaveStateController;
-use App\Http\Controllers\GetStateController;
+use App\Http\Controllers\SaveOrdersController;
+use App\Http\Controllers\GetOrdersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +15,7 @@ use App\Http\Controllers\GetStateController;
 |
 */
 
-Route::get('/', [GetStateController::class, 'getState']);
-Route::get('/api/state/save', [SaveStateController::class, 'saveState']);
+Route::get('/', [GetOrdersController::class, 'getBulkOrders']);
+Route::get('/api/save/orders', [SaveOrdersController::class, 'saveOrders'])->name('saveOrders');
+Route::get('/api/get/orders/bulk', [GetOrdersController::class, 'getBulkOrders'])->name('getBulkOrders');
+
