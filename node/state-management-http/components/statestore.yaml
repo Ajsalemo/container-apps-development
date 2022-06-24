@@ -8,8 +8,8 @@ spec:
   version: v1
   metadata:
   - name: accountName
-    value: "storageaccount"
+    value: "ansalemostorageaccount"
   - name: accountKey
-    value: ""
+    value: "CCZXFhnPhgJh39MCT24+ZuSAjJOrqua7hzgXZwnwNMJYwQ0VdsXXVwfzfiJF2ckzh79CVaESVFtD+AStyiu8Aw=="
   - name: containerName
     value: "general"
