@@ -3,14 +3,14 @@ componentType: state.azure.blobstorage
 version: v1
 metadata:
 - name: accountName
-  value: "ansalemostorageaccount"
+  value: "storageaccount"
 - name: accountKey
   secretRef: account-key
 - name: containerName
   value: general
 secrets:
 - name: account-key
-  value: "CCZXFhnPhgJh39MCT24+ZuSAjJOrqua7hzgXZwnwNMJYwQ0VdsXXVwfzfiJF2ckzh79CVaESVFtD+AStyiu8Aw=="
+  value: ""
 scopes:
 - dapr-node-statemanagement-http
 
