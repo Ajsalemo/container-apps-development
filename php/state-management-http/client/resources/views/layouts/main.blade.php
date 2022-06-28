@@ -84,6 +84,10 @@
             display: flex
         }
 
+        .flex-column {
+            flex-direction: column
+        }
+
         .grid {
             display: grid
         }

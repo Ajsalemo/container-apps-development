@@ -10,6 +10,6 @@ spec:
   - name: accountName
     value: "storageaccount"
   - name: accountKey
-    value: ""
+    value: "password"
   - name: containerName
     value: "general"

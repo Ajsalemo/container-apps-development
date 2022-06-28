@@ -24,7 +24,6 @@ class GetOrdersController extends Controller {
             CURLOPT_POSTFIELDS => $daprKeyArr
         );
 
-        echo($this->daprBaseUrl . $this->daprStateStoreName . '/bulk');
         curl_setopt_array($curl, $optArray);
         $result = curl_exec($curl); 
         echo($result);
