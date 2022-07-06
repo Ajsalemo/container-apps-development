@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: node-state-management-redis-app
+  labels:
+    app: node-state-management-redis-app
+spec:
+  selector:
+    app: node-state-management-redis-app
+  ports:
+  - protocol: TCP
+    port: 3000
+    nodePort: 31320
+  type: NodePort

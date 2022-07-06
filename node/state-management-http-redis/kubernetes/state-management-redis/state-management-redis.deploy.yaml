@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-state-management-redis-app
+  labels:
+    app: node-state-management-redis-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-state-management-redis-app
+  template:
+    metadata:
+      labels:
+        app: node-state-management-redis-app
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "node-state-management-redis-app"
+        dapr.io/app-port: "3000"
+    spec:
+      containers:
+      - name: node-state-management-redis-app
+        image: dapr-node-statemanagement-redis:latest
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: "IfNotPresent"

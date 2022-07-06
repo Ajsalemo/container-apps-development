@@ -1,0 +1,9 @@
+RESOURCE_GROUP="my-rg"
+CONTAINERAPPS_ENVIRONMENT="myappsenvironment-oss"
+LOCATION="eastus"
+AZURE_CONTAINER_REGISTRY="mycontainerregistry.azurecr.io"
+AZURE_CONTAINER_REGISTRY_USERNAME="myContainerRegistry"
+AZURE_CONTAINER_REGISTRY_PASSWORD="password"
+AZURE_REDIS_HOST="somecache.redis.cache.windows.net:6379"
+AZURE_REDIS_PASSWORD="password"
+AZURE_REDIS_TLS_ENABLED=false
