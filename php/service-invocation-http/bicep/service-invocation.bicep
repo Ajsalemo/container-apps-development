@@ -23,7 +23,7 @@ resource logAnalyticsWorkspace'Microsoft.OperationalInsights/workspaces@2020-03-
   })
 }
 
-resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
+resource environment 'Microsoft.App/managedEnvironments@2022-03-01' = {
   name: environment_name
   location: location
   properties: {
@@ -37,7 +37,7 @@ resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
   }
 }
 
-resource client 'Microsoft.App/containerApps@2022-01-01-preview' = {
+resource client 'Microsoft.App/containerApps@2022-03-01' = {
   name: 'client'
   location: location
   properties: {
@@ -97,7 +97,7 @@ resource client 'Microsoft.App/containerApps@2022-01-01-preview' = {
   }
 }
 
-resource server 'Microsoft.App/containerApps@2022-01-01-preview' = {
+resource server 'Microsoft.App/containerApps@2022-03-01' = {
   name: 'server'
   location: location
   properties: {

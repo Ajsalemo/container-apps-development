@@ -40,7 +40,7 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   }
 }
 
-resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
+resource environment 'Microsoft.App/managedEnvironments@2022-03-01' = {
   name: environment_name
   location: location
   properties: {
@@ -55,7 +55,7 @@ resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
   }
 }
 
-resource pythonusermanagedidentity 'Microsoft.App/containerApps@2022-01-01-preview' = {
+resource pythonusermanagedidentity 'Microsoft.App/containerApps@2022-03-01' = {
   name: 'pythonusermanagedidentity'
   location: location
   identity: {

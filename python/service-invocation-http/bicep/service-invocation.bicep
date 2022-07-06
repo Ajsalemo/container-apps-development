@@ -33,7 +33,7 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   }
 }
 
-resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
+resource environment 'Microsoft.App/managedEnvironments@2022-03-01' = {
   name: environment_name
   location: location
   properties: {
@@ -48,7 +48,7 @@ resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
   }
 }
 
-resource daprcontainerappcheckout 'Microsoft.App/containerApps@2022-01-01-preview' = {
+resource daprcontainerappcheckout 'Microsoft.App/containerApps@2022-03-01' = {
   name: 'daprcontainerappcheckout'
   location: location
   properties: {
@@ -106,7 +106,7 @@ resource daprcontainerappcheckout 'Microsoft.App/containerApps@2022-01-01-previe
   }
 }
 
-resource daprcontainerapporderprocessor 'Microsoft.App/containerApps@2022-01-01-preview' = {
+resource daprcontainerapporderprocessor 'Microsoft.App/containerApps@2022-03-01' = {
   name: 'daprcontainerapporderprocessor'
   location: location
   properties: {

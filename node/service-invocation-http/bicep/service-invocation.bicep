@@ -32,7 +32,7 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   }
 }
 
-resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
+resource environment 'Microsoft.App/managedEnvironments@2022-03-01' = {
   name: environment_name
   location: location
   properties: {
@@ -47,7 +47,7 @@ resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
   }
 }
 
-resource serviceinvocationnodeclient 'Microsoft.App/containerApps@2022-01-01-preview' = {
+resource serviceinvocationnodeclient 'Microsoft.App/containerApps@2022-03-01' = {
   name: 'serviceinvocationnodeclient'
   location: location
   properties: {
@@ -97,7 +97,7 @@ resource serviceinvocationnodeclient 'Microsoft.App/containerApps@2022-01-01-pre
   }
 }
 
-resource serviceinvocationnodeserver 'Microsoft.App/containerApps@2022-01-01-preview' = {
+resource serviceinvocationnodeserver 'Microsoft.App/containerApps@2022-03-01' = {
   name: 'serviceinvocationnodeserver'
   location: location
   properties: {

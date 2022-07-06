@@ -34,7 +34,7 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   }
 }
 
-resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
+resource environment 'Microsoft.App/managedEnvironments@2022-03-01' = {
   name: environment_name
   location: location
   properties: {
@@ -50,7 +50,7 @@ resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
 }
 
 // Reference: https://docs.microsoft.com/en-us/azure/templates/microsoft.app/managedenvironments/daprcomponents?tabs=bicep
-resource daprComponent 'Microsoft.App/managedEnvironments/daprComponents@2022-01-01-preview' = {
+resource daprComponent 'Microsoft.App/managedEnvironments/daprComponents@2022-03-01' = {
   name: 'pubsub'
   parent: environment
   properties: {
@@ -89,7 +89,7 @@ resource daprComponent 'Microsoft.App/managedEnvironments/daprComponents@2022-01
   }
 }
 
-resource checkout 'Microsoft.App/containerApps@2022-01-01-preview' = {
+resource checkout 'Microsoft.App/containerApps@2022-03-01' = {
   name: 'checkout'
   location: location
   properties: {
@@ -139,7 +139,7 @@ resource checkout 'Microsoft.App/containerApps@2022-01-01-preview' = {
   }
 }
 
-resource orderprocessor 'Microsoft.App/containerApps@2022-01-01-preview' = {
+resource orderprocessor 'Microsoft.App/containerApps@2022-03-01' = {
   name: 'orderprocessor'
   location: location
   properties: {

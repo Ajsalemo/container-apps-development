@@ -34,7 +34,7 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   }
 }
 
-resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
+resource environment 'Microsoft.App/managedEnvironments@2022-03-01' = {
   name: environment_name
   location: location
   properties: {
@@ -49,7 +49,7 @@ resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
   }
 }
 
-resource pythonmanagedidentitykeyvault 'Microsoft.App/containerApps@2022-01-01-preview' = {
+resource pythonmanagedidentitykeyvault 'Microsoft.App/containerApps@2022-03-01' = {
   name: 'pythonmanagedidentitykeyvault'
   location: location
   identity: {
@@ -111,7 +111,7 @@ resource keyVaultPolicy 'Microsoft.KeyVault/vaults/accessPolicies@2021-11-01-pre
   properties: {
     accessPolicies: [
       {
-        objectId: reference('Microsoft.App/containerApps/${pythonmanagedidentitykeyvault.name}', '2022-01-01-preview', 'Full').identity.principalId
+        objectId: reference('Microsoft.App/containerApps/${pythonmanagedidentitykeyvault.name}', '2022-03-01', 'Full').identity.principalId
         permissions: {
           secrets: [
             'get'

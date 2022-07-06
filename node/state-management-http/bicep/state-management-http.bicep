@@ -34,7 +34,7 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   }
 }
 
-resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
+resource environment 'Microsoft.App/managedEnvironments@2022-03-01' = {
   name: environment_name
   location: location
   properties: {
@@ -50,7 +50,7 @@ resource environment 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
 }
 
 // Reference: https://docs.microsoft.com/en-us/azure/templates/microsoft.app/managedenvironments/daprcomponents?tabs=bicep
-resource daprComponent 'Microsoft.App/managedEnvironments/daprComponents@2022-01-01-preview' = {
+resource daprComponent 'Microsoft.App/managedEnvironments/daprComponents@2022-03-01' = {
   name: 'statestore'
   parent: environment
   properties: {
@@ -87,7 +87,7 @@ resource daprComponent 'Microsoft.App/managedEnvironments/daprComponents@2022-01
 }
 
 
-resource nodestatemanagementhttpapp 'Microsoft.App/containerApps@2022-01-01-preview' = {
+resource nodestatemanagementhttpapp 'Microsoft.App/containerApps@2022-03-01' = {
   name: 'nodestatemanagementhttpapp'
   location: location
   properties: {
