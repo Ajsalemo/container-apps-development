@@ -15,7 +15,7 @@ class SaveOrdersController extends Controller
 
         for ($i =  0; $i < 10; $i++) {
             $curl = curl_init();
-            $stateStoreValues = array(array('key' => 'order_' . $i, 'value' => $i));
+            $stateStoreValues = array(array('key' => 'order_' . $i, 'value' => 'new_order_' . $i));
 
             $optArray = array(
                 CURLOPT_URL => $this->daprBaseUrl . $this->daprStateStoreName,

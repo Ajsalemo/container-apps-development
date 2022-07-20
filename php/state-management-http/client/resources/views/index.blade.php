@@ -10,7 +10,7 @@
             @else
                 <span>{{ $result }}</span>
             @endif --}}
-            <span>{{ $result }}</span>
+            <span>{{ print_r($result) }}</span>
             <div class="flex flex-column">
                 <a href="{{ route('getBulkOrders') }}">Click to get all orders</a>
                 <a href="{{ route('saveOrders') }}">Click to push orders</a>
